@@ -4,11 +4,12 @@ function setUpSpecialNavs() {
         var e = $(this).closest("nav"),
             i = e.find("ul.site-navigation"),
             a = i.clone();
-        if (i.parent().hasClass("nav-special"))
-            if (t.stopPropagation(), $(this).hasClass("selected-nav")) $(".blocsapp-special-menu blocsnav").removeClass("open"), $(".selected-nav").removeClass("selected-nav"), setTimeout(function() {
-                $(".blocsapp-special-menu").remove(), $("body").removeClass("lock-scroll"), $(".selected-nav").removeClass("selected-nav")
-            }, 300);
-            else {
+        if (i.parent().hasClass("nav-special")) {
+            if ((t.stopPropagation(), $(this).hasClass("selected-nav"))) {
+                $(".blocsapp-special-menu blocsnav").removeClass("open"), $(".selected-nav").removeClass("selected-nav"), setTimeout(function() {
+                    $(".blocsapp-special-menu").remove(), $("body").removeClass("lock-scroll"), $(".selected-nav").removeClass("selected-nav")
+                }, 300);
+            } else {
                 $(this).addClass("selected-nav");
                 var o = e.attr("class").replace("navbar", "").replace("row", ""),
                     l = i.parent().attr("class").replace("navbar-collapse", "").replace("collapse", "");
@@ -25,6 +26,7 @@ function setUpSpecialNavs() {
                         $(".blocsapp-special-menu blocsnav").addClass("open"), $(".content-tint").addClass("on"), $("body").addClass("lock-scroll")
                     }, 10)
             }
+        }
     }), $("body").on("mousedown touchstart", ".content-tint, .close-special-menu", function(t) {
         $(".content-tint").removeClass("on"), $(".selected-nav").click(), setTimeout(function() {
             $(".content-tint").remove()
@@ -48,14 +50,14 @@ function setFillScreenBlocHeight() {
     $(".bloc-fill-screen").each(function(t) {
         var e = $(this);
         window.fillBodyHeight = 0, $(this).find(".container").each(function(t) {
-            fillPadding = 2 * parseInt($(this).css("padding-top")), e.hasClass("bloc-group") ? fillBodyHeight = fillPadding + $(this).outerHeight() + 50 : fillBodyHeight = fillBodyHeight + fillPadding + $(this).outerHeight() + 50
+            fillPadding = 2 * parseInt($(this).css("padding-top"), 10), e.hasClass("bloc-group") ? fillBodyHeight = fillPadding + $(this).outerHeight() + 50 : fillBodyHeight = fillBodyHeight + fillPadding + $(this).outerHeight() + 50
         }), $(this).css("height", getFillHeight() + "px")
     })
 }
 
 function getFillHeight() {
     var t = $(window).height();
-    return t < fillBodyHeight && (t = fillBodyHeight + 100), t
+    return (t < fillBodyHeight && (t = fillBodyHeight + 100), t)
 }
 
 function scrollToTarget(t) {
@@ -103,7 +105,7 @@ function inViewCheck() {
             var o = e.attr("class").replace("hideMe", "animated");
             e.css("visibility", "hidden").removeAttr("class"), setTimeout(function() {
                 e.attr("class", o).css("visibility", "visible")
-            }, .01)
+            }, 0.01)
         }
     })
 }
@@ -121,7 +123,9 @@ function setUpVisibilityToggle() {
             $.each(i, function(t) {
                 a($("#" + i[t]))
             })
-        } else a($("#" + e));
+        } else {
+            a($("#" + e));
+        }
 
         function a(t) {
             t.is("img") ? t.toggle() : t.slideToggle()
@@ -154,7 +158,9 @@ function setUpLightBox() {
         if (".mp4" == o.substring(o.length - 4)) {
             var l = "";
             1 == a.attr("data-autoplay") && (l = "autoplay"), $("#lightbox-image, .lightbox-caption").hide(), $("#lightbox-video-container").show().html("<video controls " + l + ' class="embed-responsive-item"><source id="lightbox-video" src="' + o + '" type="video/mp4"></video>')
-        } else $("#lightbox-image").attr("src", o).show(), $(".lightbox-caption").html(a.attr("data-caption")).show(), $("#lightbox-video-container").hide();
+        } else {
+            $("#lightbox-image").attr("src", o).show(), $(".lightbox-caption").html(a.attr("data-caption")).show(), $("#lightbox-video-container").hide();
+        }
         targetLightbox = a, $(".next-lightbox, .prev-lightbox").hide(), "no-gallery-set" == e ? ($("a[data-lightbox]").index(a) != $("a[data-lightbox]").length - 1 && $(".next-lightbox").show(), $("a[data-lightbox]").index(a) > 0 && $(".prev-lightbox").show()) : ($('a[data-gallery-id="' + e + '"]').index(a) != $('a[data-gallery-id="' + e + '"]').length - 1 && $(".next-lightbox").show(), $('a[data-gallery-id="' + e + '"]').index(a) > 0 && $(".prev-lightbox").show())
     })
 }
