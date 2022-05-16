@@ -50,6 +50,9 @@ a:hover {
 
 .bloc-md {
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .bloc-sm {
@@ -1039,4 +1042,28 @@ h4 {
     .bloc-mob-center-text {
         text-align: center;
     }
+}
+
+.col-sm-12.text-center {
+    width: 65%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.col-xs-12.col-md-8.col-md-offset-2.text-center {
+    margin-left: 0;
+    width: 60%;
+}
+
+.col-xs-12.col-md-8.col-md-offset-2.text-center p {
+    font-size: 20px;
+}
+
+.col-xs-12.col-md-8.col-md-offset-2.text-center p span{
+    color: grey;
 }
