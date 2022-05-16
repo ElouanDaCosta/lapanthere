@@ -1048,13 +1048,6 @@ h4 {
     width: 65%;
 }
 
-.row {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-}
-
 .col-xs-12.col-md-8.col-md-offset-2.text-center {
     margin-left: 0;
     width: 60%;
